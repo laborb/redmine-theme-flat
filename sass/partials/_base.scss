@@ -904,6 +904,36 @@ form.edit_issue input[type='checkbox'] + label {
   top: 1px;
 }
 
+// Fix: Checkbox-Klickfläche begrenzen auf Text + Checkbox
+// Problem: Label mit margin-left: -180px erstreckt Klickfläche zu weit nach links
+// Lösung: pointer-events auf Label deaktivieren, nur auf Text-Spans aktivieren
+form.edit_issue label[for^="issue_custom_field_values_"],
+form.new_issue label[for^="issue_custom_field_values_"] {
+  // Deaktiviert Klickfläche auf dem gesamten Label-Element
+  pointer-events: none;
+
+  // Reaktiviert Klickfläche nur auf den Text-Spans
+  span {
+    pointer-events: auto;
+    cursor: pointer;
+  }
+}
+
+// Fix: Radio-Buttons und Checkboxen fixe Größe (auch in schmalen Breakpoints)
+// Problem: In schmalen Breakpoints werden Radio-Buttons größer und Labels unleserlich
+input[type="radio"],
+input[type="checkbox"] {
+  width: 13px !important;
+  height: 13px !important;
+  min-width: 13px !important;
+  min-height: 13px !important;
+  max-width: 13px !important;
+  max-height: 13px !important;
+  vertical-align: middle;
+  margin: 0 4px 0 0;
+  flex-shrink: 0; // Verhindert Schrumpfen in Flexbox
+}
+
 // Plugin: Agile
 .agile-board {
   .issue-card {

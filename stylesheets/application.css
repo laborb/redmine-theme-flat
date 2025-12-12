@@ -6,50 +6,40 @@
   font-family: "Roboto";
   font-style: normal;
   font-weight: 100 400;
-  src: url("../fonts/roboto-v20-latin-300.eot");
-  /* IE9 Compat Modes */
-  src: local("Roboto Light"), local("Roboto-Light"), url("../fonts/roboto-v20-latin-300.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-v20-latin-300.woff2") format("woff2"), url("../fonts/roboto-v20-latin-300.woff") format("woff"), url("../fonts/roboto-v20-latin-300.ttf") format("truetype"), url("../fonts/roboto-v20-latin-300.svg#Roboto") format("svg");
-  /* Legacy iOS */
+  src: url("../fonts/roboto-v20-latin-300.eot"); /* IE9 Compat Modes */
+  src: local("Roboto Light"), local("Roboto-Light"), url("../fonts/roboto-v20-latin-300.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-v20-latin-300.woff2") format("woff2"), url("../fonts/roboto-v20-latin-300.woff") format("woff"), url("../fonts/roboto-v20-latin-300.ttf") format("truetype"), url("../fonts/roboto-v20-latin-300.svg#Roboto") format("svg"); /* Legacy iOS */
 }
 /* roboto-300italic - latin */
 @font-face {
   font-family: "Roboto";
   font-style: italic;
   font-weight: 100 400;
-  src: url("../fonts/roboto-v20-latin-300italic.eot");
-  /* IE9 Compat Modes */
-  src: local("Roboto Light Italic"), local("Roboto-LightItalic"), url("../fonts/roboto-v20-latin-300italic.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-v20-latin-300italic.woff2") format("woff2"), url("../fonts/roboto-v20-latin-300italic.woff") format("woff"), url("../fonts/roboto-v20-latin-300italic.ttf") format("truetype"), url("../fonts/roboto-v20-latin-300italic.svg#Roboto") format("svg");
-  /* Legacy iOS */
+  src: url("../fonts/roboto-v20-latin-300italic.eot"); /* IE9 Compat Modes */
+  src: local("Roboto Light Italic"), local("Roboto-LightItalic"), url("../fonts/roboto-v20-latin-300italic.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-v20-latin-300italic.woff2") format("woff2"), url("../fonts/roboto-v20-latin-300italic.woff") format("woff"), url("../fonts/roboto-v20-latin-300italic.ttf") format("truetype"), url("../fonts/roboto-v20-latin-300italic.svg#Roboto") format("svg"); /* Legacy iOS */
 }
 /* roboto-500 - latin */
 @font-face {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 500 900;
-  src: url("../fonts/roboto-v20-latin-500.eot");
-  /* IE9 Compat Modes */
-  src: local("Roboto Medium"), local("Roboto-Medium"), url("../fonts/roboto-v20-latin-500.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-v20-latin-500.woff2") format("woff2"), url("../fonts/roboto-v20-latin-500.woff") format("woff"), url("../fonts/roboto-v20-latin-500.ttf") format("truetype"), url("../fonts/roboto-v20-latin-500.svg#Roboto") format("svg");
-  /* Legacy iOS */
+  src: url("../fonts/roboto-v20-latin-500.eot"); /* IE9 Compat Modes */
+  src: local("Roboto Medium"), local("Roboto-Medium"), url("../fonts/roboto-v20-latin-500.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-v20-latin-500.woff2") format("woff2"), url("../fonts/roboto-v20-latin-500.woff") format("woff"), url("../fonts/roboto-v20-latin-500.ttf") format("truetype"), url("../fonts/roboto-v20-latin-500.svg#Roboto") format("svg"); /* Legacy iOS */
 }
 /* roboto-500italic - latin */
 @font-face {
   font-family: "Roboto";
   font-style: italic;
   font-weight: 500 900;
-  src: url("../fonts/roboto-v20-latin-500italic.eot");
-  /* IE9 Compat Modes */
-  src: local("Roboto Medium Italic"), local("Roboto-MediumItalic"), url("../fonts/roboto-v20-latin-500italic.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-v20-latin-500italic.woff2") format("woff2"), url("../fonts/roboto-v20-latin-500italic.woff") format("woff"), url("../fonts/roboto-v20-latin-500italic.ttf") format("truetype"), url("../fonts/roboto-v20-latin-500italic.svg#Roboto") format("svg");
-  /* Legacy iOS */
+  src: url("../fonts/roboto-v20-latin-500italic.eot"); /* IE9 Compat Modes */
+  src: local("Roboto Medium Italic"), local("Roboto-MediumItalic"), url("../fonts/roboto-v20-latin-500italic.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-v20-latin-500italic.woff2") format("woff2"), url("../fonts/roboto-v20-latin-500italic.woff") format("woff"), url("../fonts/roboto-v20-latin-500italic.ttf") format("truetype"), url("../fonts/roboto-v20-latin-500italic.svg#Roboto") format("svg"); /* Legacy iOS */
 }
 /* roboto-mono-regular - latin */
 @font-face {
   font-family: "Roboto Mono";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/roboto-mono-v7-latin-regular.eot");
-  /* IE9 Compat Modes */
-  src: local("Roboto Mono"), local("RobotoMono-Regular"), url("../fonts/roboto-mono-v7-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v7-latin-regular.woff2") format("woff2"), url("../fonts/roboto-mono-v7-latin-regular.woff") format("woff"), url("../fonts/roboto-mono-v7-latin-regular.ttf") format("truetype"), url("../fonts/roboto-mono-v7-latin-regular.svg#RobotoMono") format("svg");
-  /* Legacy iOS */
+  src: url("../fonts/roboto-mono-v7-latin-regular.eot"); /* IE9 Compat Modes */
+  src: local("Roboto Mono"), local("RobotoMono-Regular"), url("../fonts/roboto-mono-v7-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-mono-v7-latin-regular.woff2") format("woff2"), url("../fonts/roboto-mono-v7-latin-regular.woff") format("woff"), url("../fonts/roboto-mono-v7-latin-regular.ttf") format("truetype"), url("../fonts/roboto-mono-v7-latin-regular.svg#RobotoMono") format("svg"); /* Legacy iOS */
 }
 .input_tiny {
   width: 50px;
@@ -146,8 +136,6 @@ input[type=button] {
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
-  *padding-top: 2px;
-  *padding-bottom: 0;
 }
 button:hover, button:active,
 a.button:hover,
@@ -160,6 +148,14 @@ input[type=button]:hover,
 input[type=button]:active {
   background: #484848;
   color: white;
+}
+button,
+a.button,
+input[type=reset],
+input[type=submit],
+input[type=button] {
+  *padding-top: 2px;
+  *padding-bottom: 0;
 }
 button::-moz-focus-inner,
 a.button::-moz-focus-inner,
@@ -330,21 +326,19 @@ select[size="1"] {
 
 @media (-webkit-min-device-pixel-ratio: 0) {
   select[size],
-select[multiple],
-select[multiple][size] {
+  select[multiple],
+  select[multiple][size] {
     background-image: none;
     padding-right: 3px;
   }
-
   select,
-select[size="0"],
-select[size="1"] {
+  select[size="0"],
+  select[size="1"] {
     background-image: url(data:image/png;base64,R0lGODlhDQAEAIAAAAAAAP8A/yH5BAEHAAEALAAAAAANAAQAAAILhA+hG5jMDpxvhgIAOw==);
     background-repeat: no-repeat;
     background-position: right center;
     padding-right: 20px;
   }
-
   ::-webkit-validation-bubble-message {
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -357,10 +351,9 @@ select[size="1"] {
     text-shadow: black 0 0 1px;
     min-height: 16px;
   }
-
   ::-webkit-validation-bubble-arrow,
-::-webkit-validation-bubble-top-outer-arrow,
-::-webkit-validation-bubble-top-inner-arrow {
+  ::-webkit-validation-bubble-top-outer-arrow,
+  ::-webkit-validation-bubble-top-inner-arrow {
     -webkit-box-shadow: none;
     box-shadow: none;
     background: #666666;
@@ -625,7 +618,7 @@ a, a:link, a:visited {
 }
 a:hover, a:link:hover, a:visited:hover {
   text-decoration: none;
-  color: #55c2fd;
+  color: rgb(85.1255924171, 194.0402843602, 253.3744075829);
 }
 th a, th a:link, th a:visited {
   color: #484848;
@@ -653,18 +646,20 @@ code {
 }
 
 #top-menu {
-  background: #2d2d2d;
+  background: rgb(44.75, 44.75, 44.75);
   height: auto;
-  *zoom: 1;
-  border-bottom: 1px solid #3a3a3a;
-  background-image: url("../images/lab-logo.svg");
-  background-repeat: no-repeat;
-  background-position: 10px center;
 }
 #top-menu:after {
   content: "";
   display: table;
   clear: both;
+}
+#top-menu {
+  *zoom: 1;
+  border-bottom: 1px solid rgb(57.5, 57.5, 57.5);
+  background-image: url("../images/lab-logo.svg");
+  background-repeat: no-repeat;
+  background-position: 10px center;
 }
 #top-menu > ul {
   margin-left: 100px;
@@ -771,12 +766,14 @@ code {
   position: relative;
   left: 0;
   margin-right: 0;
-  *zoom: 1;
 }
 #main-menu:after {
   content: "";
   display: table;
   clear: both;
+}
+#main-menu {
+  *zoom: 1;
 }
 #main-menu li a {
   font-weight: 300;
@@ -789,7 +786,7 @@ code {
 }
 #main-menu li a.selected, #main-menu li a:hover {
   border-top: 3px solid #0288d1;
-  background: #3a3a3a;
+  background: rgb(57.5, 57.5, 57.5);
 }
 #main-menu li a.selected {
   font-weight: 400;
@@ -800,7 +797,7 @@ code {
   color: #0288d1;
 }
 #main-menu li a.new-object:hover {
-  background: #3a3a3a !important;
+  background: rgb(57.5, 57.5, 57.5) !important;
 }
 
 #main-menu li a.new-object {
@@ -825,13 +822,13 @@ code {
   background-color: #0288d1;
 }
 
-#main {
-  *zoom: 1;
-}
 #main:after {
   content: "";
   display: table;
   clear: both;
+}
+#main {
+  *zoom: 1;
 }
 
 #content {
@@ -968,7 +965,7 @@ div.issue div.subject div div {
   transition: color 0.5s;
 }
 #update fieldset.tabular legend:hover {
-  color: #55c2fd;
+  color: rgb(85.1255924171, 194.0402843602, 253.3744075829);
 }
 #update fieldset.tabular legend small,
 #update fieldset.tabular div,
@@ -1099,11 +1096,11 @@ table.query-columns td.buttons input[type=button] {
   color: #FF3455;
 }
 .issues tbody .priority-lowest td.priority::first-line, .issues tbody .priority-lowest td.priority::before, .issues tbody .priority-lowest td.priority::after {
-  background-color: #c7d0d8;
+  background-color: rgb(199, 208, 216);
   color: rgba(72, 72, 72, 0.75);
 }
 .issues tbody .priority-lowest td.subject a {
-  color: #a9b7c3;
+  color: rgb(168.9368421053, 182.7684210526, 195.0631578947);
 }
 
 .odd:hover, .even:hover, .list tr:hover {
@@ -1357,7 +1354,7 @@ div.journal.has-notes .wiki p:first-of-type, div.journal.has-notes .wiki blockqu
 }
 
 .warning, .nodata {
-  background-color: #eaeaea;
+  background-color: rgb(234.25, 234.25, 234.25);
   color: #919191;
 }
 
@@ -1427,6 +1424,29 @@ form.edit_issue input[type=checkbox] + label {
   font-size: 0.9rem;
   position: relative;
   top: 1px;
+}
+
+form.edit_issue label[for^=issue_custom_field_values_],
+form.new_issue label[for^=issue_custom_field_values_] {
+  pointer-events: none;
+}
+form.edit_issue label[for^=issue_custom_field_values_] span,
+form.new_issue label[for^=issue_custom_field_values_] span {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+input[type=radio],
+input[type=checkbox] {
+  width: 13px !important;
+  height: 13px !important;
+  min-width: 13px !important;
+  min-height: 13px !important;
+  max-width: 13px !important;
+  max-height: 13px !important;
+  vertical-align: middle;
+  margin: 0 4px 0 0;
+  flex-shrink: 0;
 }
 
 .agile-board .issue-card {
@@ -1711,21 +1731,17 @@ div#activity .author > a.user:hover {
   #header {
     background-color: #484848 !important;
   }
-
   h3 {
     line-height: 1.4;
   }
-
   p.buttons a.icon {
     padding-left: 32px !important;
     padding-top: 9px !important;
   }
-
   #content > .contextual a.icon {
     padding-top: 9px !important;
     padding-bottom: 9px !important;
   }
-
   #project-jump .drdn-trigger {
     overflow: visible;
     padding-top: 8px;
@@ -1733,15 +1749,12 @@ div#activity .author > a.user:hover {
   #project-jump .drdn-trigger::before {
     top: 11px;
   }
-
   #project-jump.expanded .drdn-trigger::before {
     top: 10px;
   }
-
   .flyout-menu {
-    background-color: #2f2f2f !important;
+    background-color: rgb(46.5, 46.5, 46.5) !important;
   }
-
   #sidebarHandler {
     display: none;
   }
