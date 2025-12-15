@@ -1,2 +1,12 @@
 /.sass-cache/*
 *.DS_Store
+
+# Node.js
+node_modules/
+package-lock.json
+
+# Docker/Podman (nicht mehr benötigt - dev.sh nutzt bestehende Container)
+Dockerfile
+docker-compose.yml
+.dockerignore
+Makefile
