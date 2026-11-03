@@ -1765,5 +1765,38 @@ div#activity .author > a.user:hover {
     text-align: left;
   }
 }
+.icon:has(> svg),
+.icon-only:has(> svg) {
+  background-image: none !important;
+  padding-left: 0;
+}
+
+#content > .contextual a.icon:has(> svg) {
+  padding-left: 10px !important;
+}
+
+p.buttons a.icon:has(> svg),
+.projects .root > a.icon:has(> svg),
+.projects .child > a.icon:has(> svg),
+#time-logger-menu > a.icon:has(> svg),
+.collapsible > .icon:has(> svg),
+#tab-content-versions fieldset .icon-reload:has(> svg) {
+  padding-left: 0 !important;
+}
+
+a.icon .icon-svg,
+a.icon-only .icon-svg,
+a.icon:hover .icon-svg,
+a.icon-only:hover .icon-svg {
+  stroke: currentColor;
+}
+
+a.icon .icon-svg-filled,
+a.icon-only .icon-svg-filled,
+a.icon:hover .icon-svg-filled,
+a.icon-only:hover .icon-svg-filled {
+  stroke: none;
+  fill: currentColor;
+}
 
 /*# sourceMappingURL=application.css.map */

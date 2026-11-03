@@ -1,0 +1,37 @@
+// Redmine 6: Der Kern liefert Icons als Inline-SVG (svg.icon-svg + span.icon-label) im Link
+// und setzt für .icon kein background-repeat mehr. Die Hintergrund-Icons aus _icons.scss
+// kacheln sich dann hinter dem SVG. Sie bleiben nur noch dort aktiv, wo kein SVG im Element
+// steckt (Redmine 5, Plugins ohne sprite_icon).
+.icon:has(> svg),
+.icon-only:has(> svg) {
+  background-image: none !important;
+  padding-left: 0;
+}
+
+// Eigene Abstände für Hintergrund-Icons zurücknehmen (dort mit !important gesetzt)
+#content > .contextual a.icon:has(> svg) {
+  padding-left: 10px !important;
+}
+p.buttons a.icon:has(> svg),
+.projects .root > a.icon:has(> svg),
+.projects .child > a.icon:has(> svg),
+#time-logger-menu > a.icon:has(> svg),
+.collapsible > .icon:has(> svg),
+#tab-content-versions fieldset .icon-reload:has(> svg) {
+  padding-left: 0 !important;
+}
+
+// SVG-Icons in der Linkfarbe des Themes statt im Blau des Kerns
+a.icon .icon-svg,
+a.icon-only .icon-svg,
+a.icon:hover .icon-svg,
+a.icon-only:hover .icon-svg {
+  stroke: currentColor;
+}
+a.icon .icon-svg-filled,
+a.icon-only .icon-svg-filled,
+a.icon:hover .icon-svg-filled,
+a.icon-only:hover .icon-svg-filled {
+  stroke: none;
+  fill: currentColor;
+}
