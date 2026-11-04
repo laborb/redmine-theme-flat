@@ -35,3 +35,82 @@ a.icon-only:hover .icon-svg-filled {
   stroke: none;
   fill: currentColor;
 }
+
+// Redmine 6: Schalter der Seitenleiste kommt aus dem Kern (#sidebar-switch-button, einklappbar
+// seit 6.0) und ersetzt das Plugin sidebar_hide. Aussehen und Position wie #hideSidebarButton
+// in _base.scss. Ohne left/right bleibt das fixierte Element an der linken Kante der Seitenleiste.
+#sidebar {
+  opacity: 1;
+
+  // Der Schalter sitzt in #sidebar und soll nicht mit abgeblendet werden
+  #sidebar-wrapper {
+    opacity: 0.5;
+    transition: opacity 0.4s;
+  }
+
+  &:hover #sidebar-wrapper {
+    opacity: 1;
+  }
+}
+
+#main.collapsedsidebar #sidebar {
+  border: 0;
+  padding: 0;
+}
+
+#sidebar-switch-panel {
+  height: 0;
+  margin: 0;
+  padding: 0;
+  width: 0;
+}
+
+#sidebar-switch-button {
+  background-color: $color-primary-light;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-shadow: inset -70px 0px 40px -80px rgba(0,0,0,0.2);
+  height: 60px;
+  margin-left: -45px; // Breite plus padding-left von #sidebar
+  overflow: hidden;
+  padding: 0;
+  position: fixed;
+  top: 360px;
+  transition: background-color 0.5s;
+  width: 25px;
+  z-index: 11;
+
+  svg {
+    display: none;
+  }
+
+  &::before {
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 7px solid $white;
+    content: '';
+    height: 0;
+    position: absolute;
+    right: -10px;
+    top: calc(50% - 8px);
+    transition: all 0.25s;
+    width: 0;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+
+    &::before {
+      right: calc(50% - 4px);
+    }
+  }
+}
+
+#main.collapsedsidebar #sidebar-switch-button {
+  margin-left: -25px;
+}
+
+#main.collapsedsidebar #sidebar-switch-button::before {
+  border-left: 0;
+  border-right: 7px solid $white;
+}

@@ -1799,4 +1799,73 @@ a.icon-only:hover .icon-svg-filled {
   fill: currentColor;
 }
 
+#sidebar {
+  opacity: 1;
+}
+#sidebar #sidebar-wrapper {
+  opacity: 0.5;
+  transition: opacity 0.4s;
+}
+#sidebar:hover #sidebar-wrapper {
+  opacity: 1;
+}
+
+#main.collapsedsidebar #sidebar {
+  border: 0;
+  padding: 0;
+}
+
+#sidebar-switch-panel {
+  height: 0;
+  margin: 0;
+  padding: 0;
+  width: 0;
+}
+
+#sidebar-switch-button {
+  background-color: rgba(2, 136, 209, 0.15);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-shadow: inset -70px 0px 40px -80px rgba(0, 0, 0, 0.2);
+  height: 60px;
+  margin-left: -45px;
+  overflow: hidden;
+  padding: 0;
+  position: fixed;
+  top: 360px;
+  transition: background-color 0.5s;
+  width: 25px;
+  z-index: 11;
+}
+#sidebar-switch-button svg {
+  display: none;
+}
+#sidebar-switch-button::before {
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 7px solid white;
+  content: "";
+  height: 0;
+  position: absolute;
+  right: -10px;
+  top: calc(50% - 8px);
+  transition: all 0.25s;
+  width: 0;
+}
+#sidebar-switch-button:hover {
+  background-color: #0288d1;
+}
+#sidebar-switch-button:hover::before {
+  right: calc(50% - 4px);
+}
+
+#main.collapsedsidebar #sidebar-switch-button {
+  margin-left: -25px;
+}
+
+#main.collapsedsidebar #sidebar-switch-button::before {
+  border-left: 0;
+  border-right: 7px solid white;
+}
+
 /*# sourceMappingURL=application.css.map */
