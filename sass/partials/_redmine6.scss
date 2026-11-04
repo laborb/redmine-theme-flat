@@ -180,19 +180,16 @@ div#activity dd,
 }
 
 // Redmine 6: Ticketkopf wird vom Kern anders verschachtelt (Thema in einem eigenen Container,
-// Reaktionen und Avatar davor). Avatar neben dem Thema, darunter der Autor.
+// Reaktionen und Avatar davor). Reihenfolge Thema, Autor wie zuvor.
 div.issue {
+  // Im Ticketkopf kein Avatar, bei den Notizen bleibt er
   > .avatar-with-child {
-    flex: 0 0 62px;
-    order: 0;
-    padding-top: 8px;
-    width: 62px;
+    display: none;
   }
 
   > [data-controller="sticky-issue-header"] {
-    flex: 1 1 calc(100% - 62px);
     order: 1;
-    width: auto;
+    width: 100%;
   }
 
   .author {
@@ -287,4 +284,34 @@ table.list td.checkbox {
 .ui-menu,
 .table-generator {
   z-index: 30;
+}
+
+// Toolbar darf umbrechen, in schmalen Spalten (Beschreibung im Dialog) schnitt .tabs sie sonst ab
+#content .jstTabs.tabs {
+  height: auto;
+  overflow: visible;
+  width: 100%;
+
+  ul {
+    align-items: flex-end;
+    display: flex;
+    height: auto;
+    min-width: 0;
+    position: static;
+  }
+
+  li.tab-elements {
+    flex: 1 1 0;
+    height: auto;
+    min-width: 0;
+  }
+
+  .jstElements {
+    height: auto;
+    white-space: normal;
+
+    button {
+      white-space: nowrap;
+    }
+  }
 }

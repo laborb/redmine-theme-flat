@@ -967,17 +967,10 @@ div.issue div.subject div div {
 #update fieldset.tabular legend:hover {
   color: rgb(85.1255924171, 194.0402843602, 253.3744075829);
 }
-#update fieldset.tabular legend small,
-#update fieldset.tabular div,
-#update fieldset.tabular p {
+#update fieldset.tabular:not(.show-children) legend small,
+#update fieldset.tabular:not(.show-children) div,
+#update fieldset.tabular:not(.show-children) p {
   display: none;
-}
-#update fieldset.tabular.show-children legend small {
-  display: inline;
-}
-#update fieldset.tabular.show-children div,
-#update fieldset.tabular.show-children p {
-  display: block;
 }
 
 input#issue_subject,
@@ -1923,15 +1916,11 @@ div#activity dd,
 }
 
 div.issue > .avatar-with-child {
-  flex: 0 0 62px;
-  order: 0;
-  padding-top: 8px;
-  width: 62px;
+  display: none;
 }
 div.issue > [data-controller=sticky-issue-header] {
-  flex: 1 1 calc(100% - 62px);
   order: 1;
-  width: auto;
+  width: 100%;
 }
 div.issue .author {
   flex: 1 1 0;
@@ -2010,6 +1999,31 @@ table.list td.checkbox {
 .ui-menu,
 .table-generator {
   z-index: 30;
+}
+
+#content .jstTabs.tabs {
+  height: auto;
+  overflow: visible;
+  width: 100%;
+}
+#content .jstTabs.tabs ul {
+  align-items: flex-end;
+  display: flex;
+  height: auto;
+  min-width: 0;
+  position: static;
+}
+#content .jstTabs.tabs li.tab-elements {
+  flex: 1 1 0;
+  height: auto;
+  min-width: 0;
+}
+#content .jstTabs.tabs .jstElements {
+  height: auto;
+  white-space: normal;
+}
+#content .jstTabs.tabs .jstElements button {
+  white-space: nowrap;
 }
 
 /*# sourceMappingURL=application.css.map */
