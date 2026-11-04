@@ -1342,10 +1342,6 @@ div.journal.has-notes .wiki p:first-of-type, div.journal.has-notes .wiki blockqu
   background-position-x: 98% !important;
 }
 
-#content > #context-menu {
-  transform: translateY(-160px);
-}
-
 .warning, .nodata {
   background-color: rgb(234.25, 234.25, 234.25);
   color: #919191;
@@ -1922,6 +1918,9 @@ div.issue > [data-controller=sticky-issue-header] {
   order: 1;
   width: 100%;
 }
+div.issue .subject h3 {
+  line-height: 58px;
+}
 div.issue .author {
   flex: 1 1 0;
   width: auto;
@@ -1929,7 +1928,7 @@ div.issue .author {
 div.issue .next-prev-links {
   flex: 0 0 auto;
   line-height: 24px;
-  margin: 8px 0 16px 1rem;
+  margin: 0 0 16px 1rem;
   order: 3;
   width: auto;
 }
@@ -2026,4 +2025,36 @@ table.list td.checkbox {
   white-space: nowrap;
 }
 
-/*# sourceMappingURL=application.css.map */
+#content div.issue .author,
+#content div.issue .next-prev-links {
+  margin-top: 0;
+}
+
+@media screen and (min-width: 900px) {
+  #quick-search {
+    align-items: center;
+    display: flex;
+  }
+  #quick-search form {
+    align-items: center;
+    display: flex;
+    margin-right: 4px;
+  }
+}
+#relations td.buttons,
+#issue_tree td.buttons {
+  padding-right: 10px;
+}
+
+#admin-menu a.icon:not(:has(svg)) {
+  background-position: 1px 50% !important;
+  padding-left: 22px !important;
+}
+
+h3.icon:has(+ ul.subprojects) {
+  display: flex;
+}
+
+ul.subprojects {
+  display: flow-root;
+}

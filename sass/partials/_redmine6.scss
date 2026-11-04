@@ -192,6 +192,10 @@ div.issue {
     width: 100%;
   }
 
+  .subject h3 {
+    line-height: 58px;
+  }
+
   .author {
     flex: 1 1 0;
     width: auto;
@@ -200,7 +204,7 @@ div.issue {
   .next-prev-links {
     flex: 0 0 auto;
     line-height: 24px;
-    margin: 8px 0 16px 1rem;
+    margin: 0 0 16px 1rem;
     order: 3;
     width: auto;
   }
@@ -314,4 +318,45 @@ table.list td.checkbox {
       white-space: nowrap;
     }
   }
+}
+
+// Redmine 6: Autorzeile wieder dicht unter dem Titel
+#content div.issue .author,
+#content div.issue .next-prev-links {
+  margin-top: 0;
+}
+
+// Redmine 6: Suchfeld und Projektauswahl auf einer Höhe, Abstand wie zuvor
+@media screen and (min-width: 900px) {
+  #quick-search {
+    align-items: center;
+    display: flex;
+
+    form {
+      align-items: center;
+      display: flex;
+      margin-right: 4px;
+    }
+  }
+}
+
+// Redmine 6: Kein Abstand rechts, der Aktionen-Button stößt an den Tabellenrand
+#relations td.buttons,
+#issue_tree td.buttons {
+  padding-right: 10px;
+}
+
+// Redmine 6: Alte Plugin-Icons im Admin-Menü bündig zu den SVG-Icons
+#admin-menu a.icon:not(:has(svg)) {
+  background-position: 1px 50% !important;
+  padding-left: 22px !important;
+}
+
+// Redmine 6: .icon ist inline-flex, die Liste rutschte neben die Überschrift
+h3.icon:has(+ ul.subprojects) {
+  display: flex;
+}
+
+ul.subprojects {
+  display: flow-root;
 }

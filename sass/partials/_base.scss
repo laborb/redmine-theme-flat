@@ -815,10 +815,6 @@ div.journal {
     background-position-x: 98% !important;
   }
 }
-#content > #context-menu {
-  transform: translateY(-160px);
-}
-
 // Warnings
 .warning, .nodata {
   background-color: darken($gray-background, 5%);
