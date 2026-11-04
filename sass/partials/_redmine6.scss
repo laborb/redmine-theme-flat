@@ -2,22 +2,22 @@
 // und setzt für .icon kein background-repeat mehr. Die Hintergrund-Icons aus _icons.scss
 // kacheln sich dann hinter dem SVG. Sie bleiben nur noch dort aktiv, wo kein SVG im Element
 // steckt (Redmine 5, Plugins ohne sprite_icon).
-.icon:has(> svg),
-.icon-only:has(> svg) {
+.icon:has(svg),
+.icon-only:has(svg) {
   background-image: none !important;
   padding-left: 0;
 }
 
 // Eigene Abstände für Hintergrund-Icons zurücknehmen (dort mit !important gesetzt)
-#content > .contextual a.icon:has(> svg) {
+#content > .contextual a.icon:has(svg) {
   padding-left: 10px !important;
 }
-p.buttons a.icon:has(> svg),
-.projects .root > a.icon:has(> svg),
-.projects .child > a.icon:has(> svg),
-#time-logger-menu > a.icon:has(> svg),
-.collapsible > .icon:has(> svg),
-#tab-content-versions fieldset .icon-reload:has(> svg) {
+p.buttons a.icon:has(svg),
+.projects .root > a.icon:has(svg),
+.projects .child > a.icon:has(svg),
+#time-logger-menu > a.icon:has(svg),
+.collapsible > .icon:has(svg),
+#tab-content-versions fieldset .icon-reload:has(svg) {
   padding-left: 0 !important;
 }
 
@@ -113,4 +113,135 @@ a.icon-only:hover .icon-svg-filled {
 #main.collapsedsidebar #sidebar-switch-button::before {
   border-left: 0;
   border-right: 7px solid $white;
+}
+
+// Redmine 6: Der Kern setzt eigene Schriftgrößen (rem, Basis 16px) und Schriften, die unter
+// Redmine 5 fehlten. Das Theme rechnet mit 16px als Grundschrift, also wieder zurücknehmen.
+:root {
+  --fonts-main: #{$fontstack};
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+h4 {
+  font-size: 0.8125rem;
+}
+
+#sidebar,
+table.list,
+.table-list,
+.query-totals,
+div.issue p.author,
+.tabular.settings p {
+  font-size: inherit;
+}
+
+p.breadcrumb,
+p.subtitle,
+div#activity dd,
+#search-results dd {
+  font-size: 0.9em;
+}
+
+#header h1 {
+  font-size: 2rem;
+  font-weight: $font-weight-bold;
+
+  .breadcrumbs {
+    font-size: 0.5em;
+  }
+}
+
+#main-menu li a {
+  font-size: inherit;
+
+  &.selected,
+  &.selected:hover {
+    font-weight: 400;
+  }
+}
+
+// Redmine 6: Grauton der Boxen wieder wie zuvor
+.box {
+  background-color: $gray-background;
+}
+
+// Redmine 6: Der Kern setzt Abstand und Position alter Icons über :not(:has(svg)) stärker als
+// .icon in _base.scss
+.icon:not(:has(svg)) {
+  padding-left: 28px;
+}
+
+// Time Logger: .icon-action hat height: 0 und width: 100%, das wirkte nur auf Inline-Elemente nicht.
+// Der Kern macht .icon zu inline-flex.
+#time-logger-menu .icon.icon-action {
+  display: inline;
+}
+
+// Redmine 6: Ticketkopf wird vom Kern anders verschachtelt (Thema in einem eigenen Container,
+// Reaktionen und Avatar davor). Reihenfolge Thema, Autor wie zuvor.
+div.issue {
+  > [data-controller="sticky-issue-header"] {
+    order: 1;
+    width: 100%;
+  }
+
+  .next-prev-links {
+    order: 3;
+  }
+
+  > .reaction {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    width: auto;
+  }
+}
+
+// Redmine 6: Bei abgeschalteten Gravataren zeigt der Kern Initialen, zuvor gab es dort nichts
+.avatars-off .avatar,
+.avatars-off .avatar-with-child > .avatar {
+  display: none;
+}
+
+// Redmine 6: Spaltenauswahl mit SVG-Pfeilen, der Abstand aus _formalize.scss drückt sie aus dem Button
+#list-definition .buttons button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2px;
+  padding: 0;
+
+  .icon-svg {
+    stroke: $white;
+  }
+}
+
+.tabs-buttons button:not(.disabled) .icon-svg {
+  stroke: $white;
+}
+
+// Redmine 6: display von input[type=submit] in _formalize.scss schlägt .mobile-show und .mobile-hide
+@media screen and (min-width: 900px) {
+  .mobile-show {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .mobile-hide {
+    display: none !important;
+  }
+}
+
+// Redmine 6: "Filter hinzufügen" auf Höhe der Filterzeile
+.add-filter {
+  margin-top: 5px;
+}
+
+// Häkchen in markierten Zeilen auf dem blauen Hintergrund sichtbar halten
+.context-menu-selection input[type="checkbox"] {
+  accent-color: $white;
 }
