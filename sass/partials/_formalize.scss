@@ -100,7 +100,7 @@ input[type="button"] {
   @include transition(all .5s);
   &:hover,
   &:active {
-    background: $gray-text;
+    background-color: $gray-text;
     color: $white;
   }
   // IE7

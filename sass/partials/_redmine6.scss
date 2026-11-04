@@ -132,7 +132,6 @@ h4 {
 #sidebar,
 table.list,
 .table-list,
-.query-totals,
 div.issue p.author,
 .tabular.settings p {
   font-size: inherit;
@@ -181,15 +180,32 @@ div#activity dd,
 }
 
 // Redmine 6: Ticketkopf wird vom Kern anders verschachtelt (Thema in einem eigenen Container,
-// Reaktionen und Avatar davor). Reihenfolge Thema, Autor wie zuvor.
+// Reaktionen und Avatar davor). Avatar neben dem Thema, darunter der Autor.
 div.issue {
+  > .avatar-with-child {
+    flex: 0 0 62px;
+    order: 0;
+    padding-top: 8px;
+    width: 62px;
+  }
+
   > [data-controller="sticky-issue-header"] {
+    flex: 1 1 calc(100% - 62px);
     order: 1;
-    width: 100%;
+    width: auto;
+  }
+
+  .author {
+    flex: 1 1 0;
+    width: auto;
   }
 
   .next-prev-links {
+    flex: 0 0 auto;
+    line-height: 24px;
+    margin: 8px 0 16px 1rem;
     order: 3;
+    width: auto;
   }
 
   > .reaction {
@@ -198,12 +214,6 @@ div.issue {
     top: 10px;
     width: auto;
   }
-}
-
-// Redmine 6: Bei abgeschalteten Gravataren zeigt der Kern Initialen, zuvor gab es dort nichts
-.avatars-off .avatar,
-.avatars-off .avatar-with-child > .avatar {
-  display: none;
 }
 
 // Redmine 6: Spaltenauswahl mit SVG-Pfeilen, der Abstand aus _formalize.scss drückt sie aus dem Button
@@ -239,9 +249,42 @@ div.issue {
 // Redmine 6: "Filter hinzufügen" auf Höhe der Filterzeile
 .add-filter {
   margin-top: 5px;
+  white-space: nowrap;
+  width: auto;
+}
+
+// Summen auf einer Zeile mit Anwenden, Zurücksetzen, Abfrage speichern.
+// #content, weil contacts.css die Kern-Regel nach dem Theme noch einmal lädt.
+#content .query-totals {
+  font-size: inherit;
+  line-height: 21.6px;
+  margin-top: -42px;
+}
+
+body.controller-timelog #content .query-totals {
+  margin-top: initial;
+}
+
+// Redmine 6: Linie unter dem Kopf der Notizen wie zuvor
+.journals h4.journal-header {
+  border-bottom: 1px solid #ccc;
 }
 
 // Häkchen in markierten Zeilen auf dem blauen Hintergrund sichtbar halten
 .context-menu-selection input[type="checkbox"] {
   accent-color: $white;
+}
+
+// Listen mit Checkboxen: gleicher Abstand zum Tabellenrand wie rechts
+table.list th.checkbox,
+table.list td.checkbox {
+  padding-left: 10px;
+  text-align: left;
+  width: 17px;
+}
+
+// Redmine 6: Toolbar-Menüs (Sprachen, Makros, Tabelle) hängen am body und liegen sonst hinter #update
+.ui-menu,
+.table-generator {
+  z-index: 30;
 }

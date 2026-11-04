@@ -146,7 +146,7 @@ input[type=submit]:hover,
 input[type=submit]:active,
 input[type=button]:hover,
 input[type=button]:active {
-  background: #484848;
+  background-color: #484848;
   color: white;
 }
 button,
@@ -1883,7 +1883,6 @@ h4 {
 #sidebar,
 table.list,
 .table-list,
-.query-totals,
 div.issue p.author,
 .tabular.settings p {
   font-size: inherit;
@@ -1923,23 +1922,33 @@ div#activity dd,
   display: inline;
 }
 
+div.issue > .avatar-with-child {
+  flex: 0 0 62px;
+  order: 0;
+  padding-top: 8px;
+  width: 62px;
+}
 div.issue > [data-controller=sticky-issue-header] {
+  flex: 1 1 calc(100% - 62px);
   order: 1;
-  width: 100%;
+  width: auto;
+}
+div.issue .author {
+  flex: 1 1 0;
+  width: auto;
 }
 div.issue .next-prev-links {
+  flex: 0 0 auto;
+  line-height: 24px;
+  margin: 8px 0 16px 1rem;
   order: 3;
+  width: auto;
 }
 div.issue > .reaction {
   position: absolute;
   right: 15px;
   top: 10px;
   width: auto;
-}
-
-.avatars-off .avatar,
-.avatars-off .avatar-with-child > .avatar {
-  display: none;
 }
 
 #list-definition .buttons button {
@@ -1969,10 +1978,38 @@ div.issue > .reaction {
 }
 .add-filter {
   margin-top: 5px;
+  white-space: nowrap;
+  width: auto;
+}
+
+#content .query-totals {
+  font-size: inherit;
+  line-height: 21.6px;
+  margin-top: -42px;
+}
+
+body.controller-timelog #content .query-totals {
+  margin-top: initial;
+}
+
+.journals h4.journal-header {
+  border-bottom: 1px solid #ccc;
 }
 
 .context-menu-selection input[type=checkbox] {
   accent-color: white;
+}
+
+table.list th.checkbox,
+table.list td.checkbox {
+  padding-left: 10px;
+  text-align: left;
+  width: 17px;
+}
+
+.ui-menu,
+.table-generator {
+  z-index: 30;
 }
 
 /*# sourceMappingURL=application.css.map */
