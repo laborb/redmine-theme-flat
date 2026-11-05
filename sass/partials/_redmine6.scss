@@ -1,0 +1,362 @@
+// Redmine 6: Der Kern liefert Icons als Inline-SVG (svg.icon-svg + span.icon-label) im Link
+// und setzt für .icon kein background-repeat mehr. Die Hintergrund-Icons aus _icons.scss
+// kacheln sich dann hinter dem SVG. Sie bleiben nur noch dort aktiv, wo kein SVG im Element
+// steckt (Redmine 5, Plugins ohne sprite_icon).
+.icon:has(svg),
+.icon-only:has(svg) {
+  background-image: none !important;
+  padding-left: 0;
+}
+
+// Eigene Abstände für Hintergrund-Icons zurücknehmen (dort mit !important gesetzt)
+#content > .contextual a.icon:has(svg) {
+  padding-left: 10px !important;
+}
+p.buttons a.icon:has(svg),
+.projects .root > a.icon:has(svg),
+.projects .child > a.icon:has(svg),
+#time-logger-menu > a.icon:has(svg),
+.collapsible > .icon:has(svg),
+#tab-content-versions fieldset .icon-reload:has(svg) {
+  padding-left: 0 !important;
+}
+
+// SVG-Icons in der Linkfarbe des Themes statt im Blau des Kerns
+a.icon .icon-svg,
+a.icon-only .icon-svg,
+a.icon:hover .icon-svg,
+a.icon-only:hover .icon-svg {
+  stroke: currentColor;
+}
+a.icon .icon-svg-filled,
+a.icon-only .icon-svg-filled,
+a.icon:hover .icon-svg-filled,
+a.icon-only:hover .icon-svg-filled {
+  stroke: none;
+  fill: currentColor;
+}
+
+// Redmine 6: Schalter der Seitenleiste kommt aus dem Kern (#sidebar-switch-button, einklappbar
+// seit 6.0) und ersetzt das Plugin sidebar_hide. Aussehen und Position wie #hideSidebarButton
+// in _base.scss. Ohne left/right bleibt das fixierte Element an der linken Kante der Seitenleiste.
+#sidebar {
+  opacity: 1;
+
+  // Der Schalter sitzt in #sidebar und soll nicht mit abgeblendet werden
+  #sidebar-wrapper {
+    opacity: 0.5;
+    transition: opacity 0.4s;
+  }
+
+  &:hover #sidebar-wrapper {
+    opacity: 1;
+  }
+}
+
+#main.collapsedsidebar #sidebar {
+  border: 0;
+  padding: 0;
+}
+
+#sidebar-switch-panel {
+  height: 0;
+  margin: 0;
+  padding: 0;
+  width: 0;
+}
+
+#sidebar-switch-button {
+  background-color: $color-primary-light;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-shadow: inset -70px 0px 40px -80px rgba(0,0,0,0.2);
+  height: 60px;
+  margin-left: -45px; // Breite plus padding-left von #sidebar
+  overflow: hidden;
+  padding: 0;
+  position: fixed;
+  top: 360px;
+  transition: background-color 0.5s;
+  width: 25px;
+  z-index: 11;
+
+  svg {
+    display: none;
+  }
+
+  &::before {
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 7px solid $white;
+    content: '';
+    height: 0;
+    position: absolute;
+    right: -10px;
+    top: calc(50% - 8px);
+    transition: all 0.25s;
+    width: 0;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+
+    &::before {
+      right: calc(50% - 4px);
+    }
+  }
+}
+
+#main.collapsedsidebar #sidebar-switch-button {
+  margin-left: -25px;
+}
+
+#main.collapsedsidebar #sidebar-switch-button::before {
+  border-left: 0;
+  border-right: 7px solid $white;
+}
+
+// Redmine 6: Der Kern setzt eigene Schriftgrößen (rem, Basis 16px) und Schriften, die unter
+// Redmine 5 fehlten. Das Theme rechnet mit 16px als Grundschrift, also wieder zurücknehmen.
+:root {
+  --fonts-main: #{$fontstack};
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+h4 {
+  font-size: 0.8125rem;
+}
+
+#sidebar,
+table.list,
+.table-list,
+div.issue p.author,
+.tabular.settings p {
+  font-size: inherit;
+}
+
+p.breadcrumb,
+p.subtitle,
+div#activity dd,
+#search-results dd {
+  font-size: 0.9em;
+}
+
+#header h1 {
+  font-size: 2rem;
+  font-weight: $font-weight-bold;
+
+  .breadcrumbs {
+    font-size: 0.5em;
+  }
+}
+
+#main-menu li a {
+  font-size: inherit;
+
+  &.selected,
+  &.selected:hover {
+    font-weight: 400;
+  }
+}
+
+// Redmine 6: Grauton der Boxen wieder wie zuvor
+.box {
+  background-color: $gray-background;
+}
+
+// Redmine 6: Der Kern setzt Abstand und Position alter Icons über :not(:has(svg)) stärker als
+// .icon in _base.scss
+.icon:not(:has(svg)) {
+  padding-left: 28px;
+}
+
+// Time Logger: .icon-action hat height: 0 und width: 100%, das wirkte nur auf Inline-Elemente nicht.
+// Der Kern macht .icon zu inline-flex.
+#time-logger-menu .icon.icon-action {
+  display: inline;
+}
+
+// Redmine 6: Ticketkopf wird vom Kern anders verschachtelt (Thema in einem eigenen Container,
+// Reaktionen und Avatar davor). Reihenfolge Thema, Autor wie zuvor.
+div.issue {
+  // Im Ticketkopf kein Avatar, bei den Notizen bleibt er
+  > .avatar-with-child {
+    display: none;
+  }
+
+  > [data-controller="sticky-issue-header"] {
+    order: 1;
+    width: 100%;
+  }
+
+  .subject h3 {
+    line-height: 58px;
+  }
+
+  .author {
+    flex: 1 1 0;
+    width: auto;
+  }
+
+  .next-prev-links {
+    flex: 0 0 auto;
+    line-height: 24px;
+    margin: 0 0 16px 1rem;
+    order: 3;
+    width: auto;
+  }
+
+  > .reaction {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    width: auto;
+  }
+}
+
+// Redmine 6: Spaltenauswahl mit SVG-Pfeilen, der Abstand aus _formalize.scss drückt sie aus dem Button
+#list-definition .buttons button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2px;
+  padding: 0;
+
+  .icon-svg {
+    stroke: $white;
+  }
+}
+
+.tabs-buttons button:not(.disabled) .icon-svg {
+  stroke: $white;
+}
+
+// Redmine 6: display von input[type=submit] in _formalize.scss schlägt .mobile-show und .mobile-hide
+@media screen and (min-width: 900px) {
+  .mobile-show {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .mobile-hide {
+    display: none !important;
+  }
+}
+
+// Redmine 6: "Filter hinzufügen" auf Höhe der Filterzeile
+.add-filter {
+  margin-top: 5px;
+  white-space: nowrap;
+  width: auto;
+}
+
+// Summen auf einer Zeile mit Anwenden, Zurücksetzen, Abfrage speichern.
+// #content, weil contacts.css die Kern-Regel nach dem Theme noch einmal lädt.
+#content .query-totals {
+  font-size: inherit;
+  line-height: 21.6px;
+  margin-top: -42px;
+}
+
+body.controller-timelog #content .query-totals {
+  margin-top: initial;
+}
+
+// Redmine 6: Linie unter dem Kopf der Notizen wie zuvor
+.journals h4.journal-header {
+  border-bottom: 1px solid #ccc;
+}
+
+// Häkchen in markierten Zeilen auf dem blauen Hintergrund sichtbar halten
+.context-menu-selection input[type="checkbox"] {
+  accent-color: $white;
+}
+
+// Listen mit Checkboxen: gleicher Abstand zum Tabellenrand wie rechts
+table.list th.checkbox,
+table.list td.checkbox {
+  padding-left: 10px;
+  text-align: left;
+  width: 17px;
+}
+
+// Redmine 6: Toolbar-Menüs (Sprachen, Makros, Tabelle) hängen am body und liegen sonst hinter #update
+.ui-menu,
+.table-generator {
+  z-index: 30;
+}
+
+// Toolbar darf umbrechen, in schmalen Spalten (Beschreibung im Dialog) schnitt .tabs sie sonst ab
+#content .jstTabs.tabs {
+  height: auto;
+  overflow: visible;
+  width: 100%;
+
+  ul {
+    align-items: flex-end;
+    display: flex;
+    height: auto;
+    min-width: 0;
+    position: static;
+  }
+
+  li.tab-elements {
+    flex: 1 1 0;
+    height: auto;
+    min-width: 0;
+  }
+
+  .jstElements {
+    height: auto;
+    white-space: normal;
+
+    button {
+      white-space: nowrap;
+    }
+  }
+}
+
+// Redmine 6: Autorzeile wieder dicht unter dem Titel
+#content div.issue .author,
+#content div.issue .next-prev-links {
+  margin-top: 0;
+}
+
+// Redmine 6: Suchfeld und Projektauswahl auf einer Höhe, Abstand wie zuvor
+@media screen and (min-width: 900px) {
+  #quick-search {
+    align-items: center;
+    display: flex;
+
+    form {
+      align-items: center;
+      display: flex;
+      margin-right: 4px;
+    }
+  }
+}
+
+// Redmine 6: Kein Abstand rechts, der Aktionen-Button stößt an den Tabellenrand
+#relations td.buttons,
+#issue_tree td.buttons {
+  padding-right: 10px;
+}
+
+// Redmine 6: Alte Plugin-Icons im Admin-Menü bündig zu den SVG-Icons
+#admin-menu a.icon:not(:has(svg)) {
+  background-position: 1px 50% !important;
+  padding-left: 22px !important;
+}
+
+// Redmine 6: .icon ist inline-flex, die Liste rutschte neben die Überschrift
+h3.icon:has(+ ul.subprojects) {
+  display: flex;
+}
+
+ul.subprojects {
+  display: flow-root;
+}

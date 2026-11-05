@@ -372,18 +372,13 @@ div.issue div.subject div div {
         color: lighten($color-primary, 25%);
       }
     }
-    legend small,
-    div,
-    p {
-      display: none;
-    }
-    &.show-children {
-      legend small {
-        display: inline;
-      }
+    // Nur im zugeklappten Zustand ausblenden. Ein display: block beim Aufklappen zeigte auch
+    // versteckte Elemente (.wiki-preview.hidden) und zerlegte die Editor-Toolbar.
+    &:not(.show-children) {
+      legend small,
       div,
       p {
-        display: block;
+        display: none;
       }
     }
   }
@@ -820,10 +815,6 @@ div.journal {
     background-position-x: 98% !important;
   }
 }
-#content > #context-menu {
-  transform: translateY(-160px);
-}
-
 // Warnings
 .warning, .nodata {
   background-color: darken($gray-background, 5%);

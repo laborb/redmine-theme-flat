@@ -146,7 +146,7 @@ input[type=submit]:hover,
 input[type=submit]:active,
 input[type=button]:hover,
 input[type=button]:active {
-  background: #484848;
+  background-color: #484848;
   color: white;
 }
 button,
@@ -967,17 +967,10 @@ div.issue div.subject div div {
 #update fieldset.tabular legend:hover {
   color: rgb(85.1255924171, 194.0402843602, 253.3744075829);
 }
-#update fieldset.tabular legend small,
-#update fieldset.tabular div,
-#update fieldset.tabular p {
+#update fieldset.tabular:not(.show-children) legend small,
+#update fieldset.tabular:not(.show-children) div,
+#update fieldset.tabular:not(.show-children) p {
   display: none;
-}
-#update fieldset.tabular.show-children legend small {
-  display: inline;
-}
-#update fieldset.tabular.show-children div,
-#update fieldset.tabular.show-children p {
-  display: block;
 }
 
 input#issue_subject,
@@ -1347,10 +1340,6 @@ div.journal.has-notes .wiki p:first-of-type, div.journal.has-notes .wiki blockqu
 }
 #context-menu a.submenu {
   background-position-x: 98% !important;
-}
-
-#content > #context-menu {
-  transform: translateY(-160px);
 }
 
 .warning, .nodata {
@@ -1765,5 +1754,307 @@ div#activity .author > a.user:hover {
     text-align: left;
   }
 }
+.icon:has(svg),
+.icon-only:has(svg) {
+  background-image: none !important;
+  padding-left: 0;
+}
 
-/*# sourceMappingURL=application.css.map */
+#content > .contextual a.icon:has(svg) {
+  padding-left: 10px !important;
+}
+
+p.buttons a.icon:has(svg),
+.projects .root > a.icon:has(svg),
+.projects .child > a.icon:has(svg),
+#time-logger-menu > a.icon:has(svg),
+.collapsible > .icon:has(svg),
+#tab-content-versions fieldset .icon-reload:has(svg) {
+  padding-left: 0 !important;
+}
+
+a.icon .icon-svg,
+a.icon-only .icon-svg,
+a.icon:hover .icon-svg,
+a.icon-only:hover .icon-svg {
+  stroke: currentColor;
+}
+
+a.icon .icon-svg-filled,
+a.icon-only .icon-svg-filled,
+a.icon:hover .icon-svg-filled,
+a.icon-only:hover .icon-svg-filled {
+  stroke: none;
+  fill: currentColor;
+}
+
+#sidebar {
+  opacity: 1;
+}
+#sidebar #sidebar-wrapper {
+  opacity: 0.5;
+  transition: opacity 0.4s;
+}
+#sidebar:hover #sidebar-wrapper {
+  opacity: 1;
+}
+
+#main.collapsedsidebar #sidebar {
+  border: 0;
+  padding: 0;
+}
+
+#sidebar-switch-panel {
+  height: 0;
+  margin: 0;
+  padding: 0;
+  width: 0;
+}
+
+#sidebar-switch-button {
+  background-color: rgba(2, 136, 209, 0.15);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-shadow: inset -70px 0px 40px -80px rgba(0, 0, 0, 0.2);
+  height: 60px;
+  margin-left: -45px;
+  overflow: hidden;
+  padding: 0;
+  position: fixed;
+  top: 360px;
+  transition: background-color 0.5s;
+  width: 25px;
+  z-index: 11;
+}
+#sidebar-switch-button svg {
+  display: none;
+}
+#sidebar-switch-button::before {
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 7px solid white;
+  content: "";
+  height: 0;
+  position: absolute;
+  right: -10px;
+  top: calc(50% - 8px);
+  transition: all 0.25s;
+  width: 0;
+}
+#sidebar-switch-button:hover {
+  background-color: #0288d1;
+}
+#sidebar-switch-button:hover::before {
+  right: calc(50% - 4px);
+}
+
+#main.collapsedsidebar #sidebar-switch-button {
+  margin-left: -25px;
+}
+
+#main.collapsedsidebar #sidebar-switch-button::before {
+  border-left: 0;
+  border-right: 7px solid white;
+}
+
+:root {
+  --fonts-main: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+h4 {
+  font-size: 0.8125rem;
+}
+
+#sidebar,
+table.list,
+.table-list,
+div.issue p.author,
+.tabular.settings p {
+  font-size: inherit;
+}
+
+p.breadcrumb,
+p.subtitle,
+div#activity dd,
+#search-results dd {
+  font-size: 0.9em;
+}
+
+#header h1 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+#header h1 .breadcrumbs {
+  font-size: 0.5em;
+}
+
+#main-menu li a {
+  font-size: inherit;
+}
+#main-menu li a.selected, #main-menu li a.selected:hover {
+  font-weight: 400;
+}
+
+.box {
+  background-color: #f7f7f7;
+}
+
+.icon:not(:has(svg)) {
+  padding-left: 28px;
+}
+
+#time-logger-menu .icon.icon-action {
+  display: inline;
+}
+
+div.issue > .avatar-with-child {
+  display: none;
+}
+div.issue > [data-controller=sticky-issue-header] {
+  order: 1;
+  width: 100%;
+}
+div.issue .subject h3 {
+  line-height: 58px;
+}
+div.issue .author {
+  flex: 1 1 0;
+  width: auto;
+}
+div.issue .next-prev-links {
+  flex: 0 0 auto;
+  line-height: 24px;
+  margin: 0 0 16px 1rem;
+  order: 3;
+  width: auto;
+}
+div.issue > .reaction {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  width: auto;
+}
+
+#list-definition .buttons button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2px;
+  padding: 0;
+}
+#list-definition .buttons button .icon-svg {
+  stroke: white;
+}
+
+.tabs-buttons button:not(.disabled) .icon-svg {
+  stroke: white;
+}
+
+@media screen and (min-width: 900px) {
+  .mobile-show {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 899px) {
+  .mobile-hide {
+    display: none !important;
+  }
+}
+.add-filter {
+  margin-top: 5px;
+  white-space: nowrap;
+  width: auto;
+}
+
+#content .query-totals {
+  font-size: inherit;
+  line-height: 21.6px;
+  margin-top: -42px;
+}
+
+body.controller-timelog #content .query-totals {
+  margin-top: initial;
+}
+
+.journals h4.journal-header {
+  border-bottom: 1px solid #ccc;
+}
+
+.context-menu-selection input[type=checkbox] {
+  accent-color: white;
+}
+
+table.list th.checkbox,
+table.list td.checkbox {
+  padding-left: 10px;
+  text-align: left;
+  width: 17px;
+}
+
+.ui-menu,
+.table-generator {
+  z-index: 30;
+}
+
+#content .jstTabs.tabs {
+  height: auto;
+  overflow: visible;
+  width: 100%;
+}
+#content .jstTabs.tabs ul {
+  align-items: flex-end;
+  display: flex;
+  height: auto;
+  min-width: 0;
+  position: static;
+}
+#content .jstTabs.tabs li.tab-elements {
+  flex: 1 1 0;
+  height: auto;
+  min-width: 0;
+}
+#content .jstTabs.tabs .jstElements {
+  height: auto;
+  white-space: normal;
+}
+#content .jstTabs.tabs .jstElements button {
+  white-space: nowrap;
+}
+
+#content div.issue .author,
+#content div.issue .next-prev-links {
+  margin-top: 0;
+}
+
+@media screen and (min-width: 900px) {
+  #quick-search {
+    align-items: center;
+    display: flex;
+  }
+  #quick-search form {
+    align-items: center;
+    display: flex;
+    margin-right: 4px;
+  }
+}
+#relations td.buttons,
+#issue_tree td.buttons {
+  padding-right: 10px;
+}
+
+#admin-menu a.icon:not(:has(svg)) {
+  background-position: 1px 50% !important;
+  padding-left: 22px !important;
+}
+
+h3.icon:has(+ ul.subprojects) {
+  display: flex;
+}
+
+ul.subprojects {
+  display: flow-root;
+}
