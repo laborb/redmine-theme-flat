@@ -403,3 +403,12 @@ div.journal.has-notes.has-details {
 #history div.journal.has-notes.has-details .thumbnails {
   margin-left: 0.6em;
 }
+
+// "Mir zuweisen" bleibt in einer Zeile. Die Auswahl gibt dafür in schmalen Spalten Platz ab.
+#issue-form .assign-to-me-link {
+  white-space: nowrap;
+}
+
+#issue-form p:has(> .assign-to-me-link:not(.hidden)) select {
+  max-width: calc(95% - 6.5em);
+}
