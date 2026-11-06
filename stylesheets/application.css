@@ -2058,3 +2058,7 @@ h3.icon:has(+ ul.subprojects) {
 ul.subprojects {
   display: flow-root;
 }
+
+table.list th:not(.checkbox) {
+  padding-right: 10px;
+}

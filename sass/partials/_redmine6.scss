@@ -360,3 +360,8 @@ h3.icon:has(+ ul.subprojects) {
 ul.subprojects {
   display: flow-root;
 }
+
+// Spaltenköpfe liefen ineinander, _base.scss nimmt den seitlichen Abstand. Wert wie table.list td im Kern.
+table.list th:not(.checkbox) {
+  padding-right: 10px;
+}
