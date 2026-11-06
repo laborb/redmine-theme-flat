@@ -192,8 +192,11 @@ div.issue {
     width: 100%;
   }
 
+  // Einzeilig so hoch wie zuvor mit 58px Zeilenhöhe, zweizeilig ohne großen Zeilenabstand
   .subject h3 {
-    line-height: 58px;
+    line-height: 1.25;
+    padding-bottom: 10px;
+    padding-top: 11px;
   }
 
   .author {

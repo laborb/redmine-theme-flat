@@ -1904,7 +1904,9 @@ div.issue > [data-controller=sticky-issue-header] {
   width: 100%;
 }
 div.issue .subject h3 {
-  line-height: 58px;
+  line-height: 1.25;
+  padding-bottom: 10px;
+  padding-top: 11px;
 }
 div.issue .author {
   flex: 1 1 0;
