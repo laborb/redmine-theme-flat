@@ -373,20 +373,30 @@ table.list th:not(.checkbox) {
   margin-bottom: 1em;
   list-style-type: square;
   padding-inline-start: 25px;
-  font-size: 0.9em;
+  font-size: 0.8125rem; // wie die Kopfzeile des Eintrags
   line-height: 1.3;
 }
 
 // Redmine 6: Vorschaubilder, Kommentar und Änderungen stecken jetzt in .journal-content. Ohne eigene
 // Sortierung rutschte dieser Block vor die Kopfzeile. Reihenfolge wie zuvor: Kopf, Bilder, Kommentar, Änderungen.
+// Im Flex-Container fallen Außenabstände nicht zusammen, deshalb nur ein Abstand zum nächsten Eintrag.
 div.journal.has-notes.has-details {
+  margin-bottom: 1.2rem;
+
   .journal-content {
     display: flex;
     flex-direction: column;
+    margin-bottom: 0;
     order: 2;
   }
 
   .journal-details {
+    margin-bottom: 0;
     order: 5;
   }
+}
+
+// Vorschaubilder bündig zum Kommentar. #history in _base.scss setzt margin-left auf 0.
+#history div.journal.has-notes.has-details .thumbnails {
+  margin-left: 0.6em;
 }
