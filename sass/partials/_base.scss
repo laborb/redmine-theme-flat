@@ -752,22 +752,7 @@ div.journal {
       }
       & .thumbnails {
         order: 3;
-        border-left: 1em solid #CCC;
         margin: 0 0 1em;
-        padding-left: 0.7em;
-        position: relative;
-      }
-      & .thumbnails::before {
-        content: '';
-        height: 0;
-        width: 0;
-        border-top: 5px solid transparent;
-        border-bottom: 5px solid transparent;
-        border-left: 5px solid darkgrey;
-        position: absolute;
-        left: -0.5em;
-        top: 50%;
-        transform: translate(-50%, -50%);
       }
     }
     
