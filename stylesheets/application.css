@@ -2072,3 +2072,12 @@ table.list th:not(.checkbox) {
   font-size: 0.9em;
   line-height: 1.3;
 }
+
+div.journal.has-notes.has-details .journal-content {
+  display: flex;
+  flex-direction: column;
+  order: 2;
+}
+div.journal.has-notes.has-details .journal-details {
+  order: 5;
+}

@@ -376,3 +376,17 @@ table.list th:not(.checkbox) {
   font-size: 0.9em;
   line-height: 1.3;
 }
+
+// Redmine 6: Vorschaubilder, Kommentar und Änderungen stecken jetzt in .journal-content. Ohne eigene
+// Sortierung rutschte dieser Block vor die Kopfzeile. Reihenfolge wie zuvor: Kopf, Bilder, Kommentar, Änderungen.
+div.journal.has-notes.has-details {
+  .journal-content {
+    display: flex;
+    flex-direction: column;
+    order: 2;
+  }
+
+  .journal-details {
+    order: 5;
+  }
+}
