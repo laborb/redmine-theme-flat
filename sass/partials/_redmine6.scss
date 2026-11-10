@@ -412,3 +412,16 @@ div.journal.has-notes.has-details {
 #issue-form p:has(> .assign-to-me-link:not(.hidden)) select {
   max-width: calc(95% - 6.5em);
 }
+
+// Codeblöcke: Der Rahmen von Inline-Code (code in _base.scss) soll nicht an jeder Zeile im Block stehen.
+pre code {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}
+
+// Blöcke ohne Sprache (Text, Logs, Zitate) brechen um, Code mit Sprache (```ruby) scrollt weiter waagerecht.
+div.wiki pre:not(:has(> code.syntaxhl)) {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}

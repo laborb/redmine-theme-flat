@@ -2085,3 +2085,16 @@ div.journal.has-notes.has-details .journal-details {
 #issue-form p:has(> .assign-to-me-link:not(.hidden)) select {
   max-width: calc(95% - 6.5em);
 }
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}
+
+div.wiki pre:not(:has(> code.syntaxhl)) {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+/*# sourceMappingURL=application.css.map */
