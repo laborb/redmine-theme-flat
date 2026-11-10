@@ -2097,4 +2097,11 @@ div.wiki pre:not(:has(> code.syntaxhl)) {
   overflow-wrap: break-word;
 }
 
+div.wiki p,
+div.wiki li,
+div.wiki pre,
+div.wiki pre code {
+  line-height: 1.4;
+}
+
 /*# sourceMappingURL=application.css.map */

@@ -425,3 +425,11 @@ div.wiki pre:not(:has(> code.syntaxhl)) {
   white-space: pre-wrap;
   overflow-wrap: break-word;
 }
+
+// Gerenderter Text (Beschreibung, Kommentare, Wiki): engere Zeilen in Fließtext, Listen und Codeblöcken
+div.wiki p,
+div.wiki li,
+div.wiki pre,
+div.wiki pre code {
+  line-height: 1.4;
+}
