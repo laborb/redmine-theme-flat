@@ -20,13 +20,15 @@
     margin-left: 100px;
   }
 
-  .top-menu__links li {
+  // Nur die oberste Ebene: Untermenüs (z. B. Hilfe von additionals, .menu-children)
+  // behalten ihre eigenen Farben und Abstände.
+  .top-menu__links > ul > li {
     padding: 0;
   }
 
-  .top-menu__links a,
-  .top-menu__links a:link,
-  .top-menu__links a:visited,
+  .top-menu__links > ul > li > a,
+  .top-menu__links > ul > li > a:link,
+  .top-menu__links > ul > li > a:visited,
   #account .dropdown-trigger {
     color: $white;
     font-weight: normal;
@@ -35,10 +37,19 @@
     margin: 0;
   }
 
-  .top-menu__links a:hover,
+  .top-menu__links > ul > li > a:hover,
   #account .dropdown-trigger:hover {
     background-color: transparent;
     color: $color-primary-person;
+  }
+
+  // Untermenüs: alte Regeln für #top-menu li/a aus _base.scss zurücknehmen
+  .menu-children li {
+    padding: 0;
+  }
+  .menu-children li a {
+    line-height: normal;
+    font-weight: normal;
   }
 }
 
@@ -117,4 +128,120 @@ body.has-main-menu #header {
   a {
     line-height: normal;
   }
+}
+
+// Timer von time_logger: trägt sich ins Kontomenü ein, das in Redmine 7 im Avatar-Dropdown steckt.
+// theme.js holt den Eintrag heraus und setzt ihn als .lab-top-timer vor den Avatar.
+#top-menu .lab-top-timer {
+  display: flex;
+  align-items: center;
+  margin: 0 6px 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 0;
+  }
+
+  #time-logger-menu {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: $white;
+    line-height: 2.5;
+    white-space: nowrap;
+
+    a {
+      color: $white;
+    }
+    a:hover {
+      color: $color-primary-person;
+    }
+    .icon-svg {
+      stroke: currentColor;
+    }
+
+    // time_logger zeichnet seine Symbole als Hintergrundbild auf Links mit height: 0 und
+    // width: 100%; in der Flex-Zeile brach „Start #…“ dadurch unter das Listen-Symbol.
+    .icon-action,
+    .icon.icon-action {
+      display: inline-flex;
+      align-items: center;
+      width: auto;
+      height: 16px;
+      min-width: 16px;
+      margin: 0;
+      padding: 0 0 0 20px;
+      background-size: 16px 16px;
+      background-position: left center !important;
+      line-height: 16px;
+    }
+    .icon-list-action {
+      padding-left: 16px;
+    }
+    #time-logger-issue-id {
+      margin-left: 0;
+    }
+    > span,
+    #tl-timer-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0;
+    }
+  }
+}
+
+// Dialoge (jQuery UI, z. B. „Neuer Kunde“ aus redmine_contacts): Titel auf der dunklen Leiste hell
+.ui-dialog .ui-dialog-titlebar .ui-dialog-title {
+  color: $white;
+}
+
+// Buttons vom Typ button/reset so hoch wie Submit (Kern: block-size 28px nur für submit),
+// sonst steht z. B. „Abbrechen“ im Kontakt-Dialog niedriger neben „Anlegen“.
+input[type="button"],
+input[type="reset"] {
+  height: 28px;
+}
+
+// Deaktivierte Buttons: Das Theme färbt deaktivierte Felder grau (#888), auf dem blauen Button
+// ist das kaum lesbar (z. B. Helpdesk „Kommentar als E-Mail senden“ ohne Text).
+input[type="submit"]:disabled,
+input[type="button"]:disabled,
+input[type="reset"]:disabled {
+  color: $white;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+// Helpdesk: Senden-Button mit Auswahlpfeil (span.helpdesk-split). Der Abstand unter dem Button
+// im Bearbeiten-Fenster gehört an den Span, sonst steht „Abbrechen“ daneben zu tief.
+#update .helpdesk-split {
+  vertical-align: top;
+  margin-bottom: 20px;
+
+  input[name="commit"] {
+    margin-bottom: 0;
+  }
+}
+.helpdesk-split + a {
+  font-size: 16px;
+  padding: 0 15px;
+  line-height: 28px;
+}
+
+// Checklisten: Das Plugin setzt das Menü am Plus-Button links an. Im festen Bearbeiten-Fenster
+// läuft es dann rechts hinaus (Scrollbalken, abgeschnitten). Rechtsbündig am Button öffnen,
+// Breite nach Inhalt statt fester 150px.
+#checklist-menu {
+  width: auto;
+  min-width: 150px;
+  white-space: nowrap;
+  transform: translateX(calc(-100% + 22px));
+}
+// Das Plugin rechnet mit jQuery position() relativ zum Bearbeiten-Fenster (#update), das in sich
+// scrollt; das Menü stand dann um die Scrollhöhe versetzt. Der gemeinsame Container von Menü und
+// Plus-Button wird Bezugspunkt, dann stimmt die Rechnung unabhängig vom Scrollen.
+#all_attributes .tabular:has(> #checklist-menu) {
+  position: relative;
 }
