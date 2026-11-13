@@ -2147,10 +2147,13 @@ body.has-main-menu #header {
 }
 
 #header h1 {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
   min-height: 0;
   line-height: 1.2;
-  margin-top: 6px;
-  margin-bottom: 26px;
+  margin-top: 0;
+  margin-bottom: 12px;
 }
 
 #main-menu {
@@ -2244,6 +2247,12 @@ body.has-main-menu #header {
 #top-menu .lab-top-timer #time-logger-menu .icon-list-action {
   padding-left: 16px;
 }
+#top-menu .lab-top-timer #time-logger-menu .time-not-running {
+  padding-left: 20px;
+  background-size: 16px 16px;
+  background-position: left center;
+  line-height: 16px;
+}
 #top-menu .lab-top-timer #time-logger-menu #time-logger-issue-id {
   margin-left: 0;
 }
@@ -2311,4 +2320,53 @@ input[type=reset]:disabled {
 }
 #checklist_form .checklist-edit-box input.edit-box {
   width: 100%;
+}
+
+#content div.issue .next-prev-links .pagination {
+  display: inline;
+  margin: 0;
+}
+#content div.issue .next-prev-links ul.pages {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  gap: 0;
+}
+#content div.issue .next-prev-links ul.pages li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #888;
+  font-size: 0.8rem;
+  line-height: 24px;
+  min-width: 0;
+  box-shadow: none;
+}
+#content div.issue .next-prev-links ul.pages li + li::before {
+  content: "|";
+  padding: 0 6px;
+  color: #888;
+}
+#content div.issue .next-prev-links ul.pages a,
+#content div.issue .next-prev-links ul.pages span {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #888;
+  font-size: inherit;
+  line-height: inherit;
+  box-shadow: none;
+}
+#content div.issue .next-prev-links ul.pages a:hover {
+  color: #0288d1;
+  background: none;
+}
+
+#top-menu .lab-top-timer #time-logger-menu #tl-timer-wrapper {
+  gap: 0;
+  font-variant-numeric: tabular-nums;
 }

@@ -59,11 +59,16 @@ body.has-main-menu #header {
   padding-bottom: 0;
 }
 
+// Redmine 7 setzt flex-direction: column, der Breadcrumb (z. B. „LAB“) rutschte unter den Titel,
+// verschwand hinter dem Hauptmenü und machte den Kopf höher. Wie zuvor neben den Titel.
 #header h1 {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
   min-height: 0;
   line-height: 1.2;
-  margin-top: 6px;
-  margin-bottom: 26px;
+  margin-top: 0;
+  margin-bottom: 12px;
 }
 
 // Hauptmenü wieder dunkel und bündig wie unter Redmine 6
@@ -179,6 +184,13 @@ body.has-main-menu #header {
     .icon-list-action {
       padding-left: 16px;
     }
+    // Zustand „Gestoppt“: Symbol sonst so hoch wie die Zeile und über dem Text
+    .time-not-running {
+      padding-left: 20px;
+      background-size: 16px 16px;
+      background-position: left center;
+      line-height: 16px;
+    }
     #time-logger-issue-id {
       margin-left: 0;
     }
@@ -265,4 +277,64 @@ input[type="reset"]:disabled {
   input.edit-box {
     width: 100%;
   }
+}
+
+// Ticket-Navigation (« Zurück | 2/2 | Weiter »): Redmine 7 rendert sie als Button-Gruppe
+// (span.pagination > ul.pages), die höher ist als die Autorzeile und darunter rutscht.
+// Wie unter Redmine 6 als kleine graue Textzeile auf Höhe der Autorzeile.
+#content div.issue .next-prev-links {
+  .pagination {
+    display: inline;
+    margin: 0;
+  }
+
+  ul.pages {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    gap: 0;
+
+    li {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: $gray-medium;
+      font-size: 0.8rem;
+      line-height: 24px;
+      min-width: 0;
+      box-shadow: none;
+    }
+
+    li + li::before {
+      content: '|';
+      padding: 0 6px;
+      color: $gray-medium;
+    }
+
+    a,
+    span {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: $gray-medium;
+      font-size: inherit;
+      line-height: inherit;
+      box-shadow: none;
+    }
+
+    a:hover {
+      color: $color-primary;
+      background: none;
+    }
+  }
+}
+
+// Laufende Zeit des Timers ohne Abstand zwischen Stunden, Minuten, Sekunden
+#top-menu .lab-top-timer #time-logger-menu #tl-timer-wrapper {
+  gap: 0;
+  font-variant-numeric: tabular-nums;
 }
