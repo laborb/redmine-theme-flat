@@ -1,0 +1,120 @@
+// Redmine 7: Anpassungen an das neue Markup und CSS des Kerns.
+// Der Kern nutzt jetzt Open-Color-Variablen (--oc-*), logische Eigenschaften (margin-inline usw.)
+// und baut Kopf- und Hauptmenü neu auf.
+
+// Kopfmenü: Der Kern rendert <nav class="top-menu" id="top-menu"> mit .general-menu (Links)
+// und .profile-menu (Avatar mit Dropdown) als Flexbox. Das Clearfix aus _base.scss würde dort
+// als zusätzliches Flex-Element den Avatar in die Mitte schieben.
+#top-menu {
+  &:before,
+  &:after {
+    content: none;
+    display: none;
+  }
+  padding: 0 10px 0 12px;
+  font-size: 0.8125rem;
+  min-height: 36px;
+
+  .general-menu {
+    // Platz für das Logo (Hintergrundbild von #top-menu)
+    margin-left: 100px;
+  }
+
+  .top-menu__links li {
+    padding: 0;
+  }
+
+  .top-menu__links a,
+  .top-menu__links a:link,
+  .top-menu__links a:visited,
+  #account .dropdown-trigger {
+    color: $white;
+    font-weight: normal;
+    line-height: 2.5;
+    padding: 0 14px 0 10px;
+    margin: 0;
+  }
+
+  .top-menu__links a:hover,
+  #account .dropdown-trigger:hover {
+    background-color: transparent;
+    color: $color-primary-person;
+  }
+}
+
+// Kopf: Das Hauptmenü steht im Theme im Fluss (position: relative) statt absolut am unteren Rand.
+// Der Abstand, den der Kern dafür unten reserviert, entfällt deshalb.
+body.has-main-menu #header {
+  padding-bottom: 0;
+}
+
+#header h1 {
+  min-height: 0;
+  line-height: 1.2;
+  margin-top: 6px;
+  margin-bottom: 26px;
+}
+
+// Hauptmenü wieder dunkel und bündig wie unter Redmine 6
+#main-menu {
+  background: transparent;
+  padding: 0;
+  inset: auto;
+
+  ul {
+    min-height: 0;
+    align-items: stretch;
+    overflow: hidden;
+  }
+
+  // Einträge nicht schrumpfen lassen: Sonst erkennt displayTabsButtons() keinen Überlauf
+  // und zeigt die Pfeile zum Blättern nicht.
+  li {
+    flex: none;
+  }
+
+  li a {
+    display: block;
+    color: $white;
+    line-height: 1.6;
+    padding: 4px 15px 7px;
+
+    &:hover {
+      color: $white;
+    }
+
+    &.selected,
+    &.selected:hover {
+      color: $gray-text;
+      box-shadow: none;
+    }
+  }
+
+  li:has(a#new-object) {
+    padding-right: 0;
+  }
+
+  li a.new-object {
+    color: $white;
+    border: 0;
+    border-top: 3px solid $color-primary;
+    border-radius: 0;
+    margin: 0;
+    padding: 4px 15px 7px;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+// Konto-Dropdown (neu in Redmine 7): Die alten Regeln für #top-menu li/a aus _base.scss
+// würden die Einträge auf Kopfmenü-Höhe strecken.
+#top-menu #account .dropdown-content {
+  li {
+    padding: 0;
+  }
+  a {
+    line-height: normal;
+  }
+}

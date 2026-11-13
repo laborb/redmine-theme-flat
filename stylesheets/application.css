@@ -2104,4 +2104,92 @@ div.wiki pre code {
   line-height: 1.5;
 }
 
-/*# sourceMappingURL=application.css.map */
+#top-menu:before, #top-menu:after {
+  content: none;
+  display: none;
+}
+#top-menu {
+  padding: 0 10px 0 12px;
+  font-size: 0.8125rem;
+  min-height: 36px;
+}
+#top-menu .general-menu {
+  margin-left: 100px;
+}
+#top-menu .top-menu__links li {
+  padding: 0;
+}
+#top-menu .top-menu__links a,
+#top-menu .top-menu__links a:link,
+#top-menu .top-menu__links a:visited,
+#top-menu #account .dropdown-trigger {
+  color: white;
+  font-weight: normal;
+  line-height: 2.5;
+  padding: 0 14px 0 10px;
+  margin: 0;
+}
+#top-menu .top-menu__links a:hover,
+#top-menu #account .dropdown-trigger:hover {
+  background-color: transparent;
+  color: #8CCAEB;
+}
+
+body.has-main-menu #header {
+  padding-bottom: 0;
+}
+
+#header h1 {
+  min-height: 0;
+  line-height: 1.2;
+  margin-top: 6px;
+  margin-bottom: 26px;
+}
+
+#main-menu {
+  background: transparent;
+  padding: 0;
+  inset: auto;
+}
+#main-menu ul {
+  min-height: 0;
+  align-items: stretch;
+  overflow: hidden;
+}
+#main-menu li {
+  flex: none;
+}
+#main-menu li a {
+  display: block;
+  color: white;
+  line-height: 1.6;
+  padding: 4px 15px 7px;
+}
+#main-menu li a:hover {
+  color: white;
+}
+#main-menu li a.selected, #main-menu li a.selected:hover {
+  color: #484848;
+  box-shadow: none;
+}
+#main-menu li:has(a#new-object) {
+  padding-right: 0;
+}
+#main-menu li a.new-object {
+  color: white;
+  border: 0;
+  border-top: 3px solid #0288d1;
+  border-radius: 0;
+  margin: 0;
+  padding: 4px 15px 7px;
+}
+#main-menu li a.new-object:hover {
+  color: white;
+}
+
+#top-menu #account .dropdown-content li {
+  padding: 0;
+}
+#top-menu #account .dropdown-content a {
+  line-height: normal;
+}
