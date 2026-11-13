@@ -245,3 +245,24 @@ input[type="reset"]:disabled {
 #all_attributes .tabular:has(> #checklist-menu) {
   position: relative;
 }
+
+// Untermenü „Von Vorlage“ (jQuery-UI-Menü): jQuery UI setzt es rechts neben den Eintrag und prüft
+// nur den Rand des Browserfensters, nicht den des Bearbeiten-Fensters. Links daneben öffnen,
+// Vorlagennamen nicht abschneiden.
+#checklist-menu .ui-menu {
+  left: auto !important;
+  right: 100% !important;
+  top: 0 !important;
+  width: auto;
+  min-width: 150px;
+  white-space: nowrap;
+}
+
+// Eingabefeld für neue Checklistenpunkte nicht über die ganze Zeile, Plus und Menü bleiben im Fenster
+#checklist_form .checklist-edit-box {
+  flex: 0 1 50%;
+
+  input.edit-box {
+    width: 100%;
+  }
+}
