@@ -2104,4 +2104,269 @@ div.wiki pre code {
   line-height: 1.5;
 }
 
-/*# sourceMappingURL=application.css.map */
+#top-menu:before, #top-menu:after {
+  content: none;
+  display: none;
+}
+#top-menu {
+  padding: 0 10px 0 12px;
+  font-size: 0.8125rem;
+  min-height: 36px;
+}
+#top-menu .general-menu {
+  margin-left: 100px;
+}
+#top-menu .top-menu__links > ul > li {
+  padding: 0;
+}
+#top-menu .top-menu__links > ul > li > a,
+#top-menu .top-menu__links > ul > li > a:link,
+#top-menu .top-menu__links > ul > li > a:visited,
+#top-menu #account .dropdown-trigger {
+  color: white;
+  font-weight: normal;
+  line-height: 2.5;
+  padding: 0 14px 0 10px;
+  margin: 0;
+}
+#top-menu .top-menu__links > ul > li > a:hover,
+#top-menu #account .dropdown-trigger:hover {
+  background-color: transparent;
+  color: #8CCAEB;
+}
+#top-menu .menu-children li {
+  padding: 0;
+}
+#top-menu .menu-children li a {
+  line-height: normal;
+  font-weight: normal;
+}
+
+body.has-main-menu #header {
+  padding-bottom: 0;
+}
+
+#header h1 {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 0;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+#main-menu {
+  background: transparent;
+  padding: 0;
+  inset: auto;
+}
+#main-menu ul {
+  min-height: 0;
+  align-items: stretch;
+  overflow: hidden;
+}
+#main-menu li {
+  flex: none;
+}
+#main-menu li a {
+  display: block;
+  color: white;
+  line-height: 1.6;
+  padding: 4px 15px 7px;
+}
+#main-menu li a:hover {
+  color: white;
+}
+#main-menu li a.selected, #main-menu li a.selected:hover {
+  color: #484848;
+  box-shadow: none;
+}
+#main-menu li:has(a#new-object) {
+  padding-right: 0;
+}
+#main-menu li a.new-object {
+  color: white;
+  border: 0;
+  border-top: 3px solid #0288d1;
+  border-radius: 0;
+  margin: 0;
+  padding: 4px 15px 7px;
+}
+#main-menu li a.new-object:hover {
+  color: white;
+}
+
+#top-menu #account .dropdown-content li {
+  padding: 0;
+}
+#top-menu #account .dropdown-content a {
+  line-height: normal;
+}
+
+#top-menu .lab-top-timer {
+  display: flex;
+  align-items: center;
+  margin: 0 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+#top-menu .lab-top-timer li {
+  padding: 0;
+}
+#top-menu .lab-top-timer #time-logger-menu {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  line-height: 2.5;
+  white-space: nowrap;
+}
+#top-menu .lab-top-timer #time-logger-menu a {
+  color: white;
+}
+#top-menu .lab-top-timer #time-logger-menu a:hover {
+  color: #8CCAEB;
+}
+#top-menu .lab-top-timer #time-logger-menu .icon-svg {
+  stroke: currentColor;
+}
+#top-menu .lab-top-timer #time-logger-menu .icon-action,
+#top-menu .lab-top-timer #time-logger-menu .icon.icon-action {
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  height: 16px;
+  min-width: 16px;
+  margin: 0;
+  padding: 0 0 0 20px;
+  background-size: 16px 16px;
+  background-position: left center !important;
+  line-height: 16px;
+}
+#top-menu .lab-top-timer #time-logger-menu .icon-list-action {
+  padding-left: 16px;
+}
+#top-menu .lab-top-timer #time-logger-menu .time-not-running {
+  padding-left: 20px;
+  background-size: 16px 16px;
+  background-position: left center;
+  line-height: 16px;
+}
+#top-menu .lab-top-timer #time-logger-menu #time-logger-issue-id {
+  margin-left: 0;
+}
+#top-menu .lab-top-timer #time-logger-menu > span,
+#top-menu .lab-top-timer #time-logger-menu #tl-timer-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+.ui-dialog .ui-dialog-titlebar .ui-dialog-title {
+  color: white;
+}
+
+input[type=button],
+input[type=reset] {
+  height: 28px;
+}
+
+input[type=submit]:disabled,
+input[type=button]:disabled,
+input[type=reset]:disabled {
+  color: white;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#update .helpdesk-split {
+  vertical-align: top;
+  margin-bottom: 20px;
+}
+#update .helpdesk-split input[name=commit] {
+  margin-bottom: 0;
+}
+
+.helpdesk-split + a {
+  font-size: 16px;
+  padding: 0 15px;
+  line-height: 28px;
+}
+
+#checklist-menu {
+  width: auto;
+  min-width: 150px;
+  white-space: nowrap;
+  transform: translateX(calc(-100% + 22px));
+}
+
+#all_attributes .tabular:has(> #checklist-menu) {
+  position: relative;
+}
+
+#checklist-menu .ui-menu {
+  left: auto !important;
+  right: 100% !important;
+  top: 0 !important;
+  width: auto;
+  min-width: 150px;
+  white-space: nowrap;
+}
+
+#checklist_form .checklist-edit-box {
+  flex: 0 1 50%;
+}
+#checklist_form .checklist-edit-box input.edit-box {
+  width: 100%;
+}
+
+#content div.issue .next-prev-links .pagination {
+  display: inline;
+  margin: 0;
+}
+#content div.issue .next-prev-links ul.pages {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  gap: 0;
+}
+#content div.issue .next-prev-links ul.pages li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #888;
+  font-size: 0.8rem;
+  line-height: 24px;
+  min-width: 0;
+  box-shadow: none;
+}
+#content div.issue .next-prev-links ul.pages li + li::before {
+  content: "|";
+  padding: 0 6px;
+  color: #888;
+}
+#content div.issue .next-prev-links ul.pages a,
+#content div.issue .next-prev-links ul.pages span {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #888;
+  font-size: inherit;
+  line-height: inherit;
+  box-shadow: none;
+}
+#content div.issue .next-prev-links ul.pages a:hover {
+  color: #0288d1;
+  background: none;
+}
+
+#top-menu .lab-top-timer #time-logger-menu #tl-timer-wrapper {
+  gap: 0;
+  font-variant-numeric: tabular-nums;
+}

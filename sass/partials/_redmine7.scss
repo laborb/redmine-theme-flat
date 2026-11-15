@@ -1,0 +1,340 @@
+// Redmine 7: Anpassungen an das neue Markup und CSS des Kerns.
+// Der Kern nutzt jetzt Open-Color-Variablen (--oc-*), logische Eigenschaften (margin-inline usw.)
+// und baut Kopf- und Hauptmenü neu auf.
+
+// Kopfmenü: Der Kern rendert <nav class="top-menu" id="top-menu"> mit .general-menu (Links)
+// und .profile-menu (Avatar mit Dropdown) als Flexbox. Das Clearfix aus _base.scss würde dort
+// als zusätzliches Flex-Element den Avatar in die Mitte schieben.
+#top-menu {
+  &:before,
+  &:after {
+    content: none;
+    display: none;
+  }
+  padding: 0 10px 0 12px;
+  font-size: 0.8125rem;
+  min-height: 36px;
+
+  .general-menu {
+    // Platz für das Logo (Hintergrundbild von #top-menu)
+    margin-left: 100px;
+  }
+
+  // Nur die oberste Ebene: Untermenüs (z. B. Hilfe von additionals, .menu-children)
+  // behalten ihre eigenen Farben und Abstände.
+  .top-menu__links > ul > li {
+    padding: 0;
+  }
+
+  .top-menu__links > ul > li > a,
+  .top-menu__links > ul > li > a:link,
+  .top-menu__links > ul > li > a:visited,
+  #account .dropdown-trigger {
+    color: $white;
+    font-weight: normal;
+    line-height: 2.5;
+    padding: 0 14px 0 10px;
+    margin: 0;
+  }
+
+  .top-menu__links > ul > li > a:hover,
+  #account .dropdown-trigger:hover {
+    background-color: transparent;
+    color: $color-primary-person;
+  }
+
+  // Untermenüs: alte Regeln für #top-menu li/a aus _base.scss zurücknehmen
+  .menu-children li {
+    padding: 0;
+  }
+  .menu-children li a {
+    line-height: normal;
+    font-weight: normal;
+  }
+}
+
+// Kopf: Das Hauptmenü steht im Theme im Fluss (position: relative) statt absolut am unteren Rand.
+// Der Abstand, den der Kern dafür unten reserviert, entfällt deshalb.
+body.has-main-menu #header {
+  padding-bottom: 0;
+}
+
+// Redmine 7 setzt flex-direction: column, der Breadcrumb (z. B. „LAB“) rutschte unter den Titel,
+// verschwand hinter dem Hauptmenü und machte den Kopf höher. Wie zuvor neben den Titel.
+#header h1 {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 0;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+// Hauptmenü wieder dunkel und bündig wie unter Redmine 6
+#main-menu {
+  background: transparent;
+  padding: 0;
+  inset: auto;
+
+  ul {
+    min-height: 0;
+    align-items: stretch;
+    overflow: hidden;
+  }
+
+  // Einträge nicht schrumpfen lassen: Sonst erkennt displayTabsButtons() keinen Überlauf
+  // und zeigt die Pfeile zum Blättern nicht.
+  li {
+    flex: none;
+  }
+
+  li a {
+    display: block;
+    color: $white;
+    line-height: 1.6;
+    padding: 4px 15px 7px;
+
+    &:hover {
+      color: $white;
+    }
+
+    &.selected,
+    &.selected:hover {
+      color: $gray-text;
+      box-shadow: none;
+    }
+  }
+
+  li:has(a#new-object) {
+    padding-right: 0;
+  }
+
+  li a.new-object {
+    color: $white;
+    border: 0;
+    border-top: 3px solid $color-primary;
+    border-radius: 0;
+    margin: 0;
+    padding: 4px 15px 7px;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+// Konto-Dropdown (neu in Redmine 7): Die alten Regeln für #top-menu li/a aus _base.scss
+// würden die Einträge auf Kopfmenü-Höhe strecken.
+#top-menu #account .dropdown-content {
+  li {
+    padding: 0;
+  }
+  a {
+    line-height: normal;
+  }
+}
+
+// Timer von time_logger: trägt sich ins Kontomenü ein, das in Redmine 7 im Avatar-Dropdown steckt.
+// theme.js holt den Eintrag heraus und setzt ihn als .lab-top-timer vor den Avatar.
+#top-menu .lab-top-timer {
+  display: flex;
+  align-items: center;
+  margin: 0 6px 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 0;
+  }
+
+  #time-logger-menu {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: $white;
+    line-height: 2.5;
+    white-space: nowrap;
+
+    a {
+      color: $white;
+    }
+    a:hover {
+      color: $color-primary-person;
+    }
+    .icon-svg {
+      stroke: currentColor;
+    }
+
+    // time_logger zeichnet seine Symbole als Hintergrundbild auf Links mit height: 0 und
+    // width: 100%; in der Flex-Zeile brach „Start #…“ dadurch unter das Listen-Symbol.
+    .icon-action,
+    .icon.icon-action {
+      display: inline-flex;
+      align-items: center;
+      width: auto;
+      height: 16px;
+      min-width: 16px;
+      margin: 0;
+      padding: 0 0 0 20px;
+      background-size: 16px 16px;
+      background-position: left center !important;
+      line-height: 16px;
+    }
+    .icon-list-action {
+      padding-left: 16px;
+    }
+    // Zustand „Gestoppt“: Symbol sonst so hoch wie die Zeile und über dem Text
+    .time-not-running {
+      padding-left: 20px;
+      background-size: 16px 16px;
+      background-position: left center;
+      line-height: 16px;
+    }
+    #time-logger-issue-id {
+      margin-left: 0;
+    }
+    > span,
+    #tl-timer-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0;
+    }
+  }
+}
+
+// Dialoge (jQuery UI, z. B. „Neuer Kunde“ aus redmine_contacts): Titel auf der dunklen Leiste hell
+.ui-dialog .ui-dialog-titlebar .ui-dialog-title {
+  color: $white;
+}
+
+// Buttons vom Typ button/reset so hoch wie Submit (Kern: block-size 28px nur für submit),
+// sonst steht z. B. „Abbrechen“ im Kontakt-Dialog niedriger neben „Anlegen“.
+input[type="button"],
+input[type="reset"] {
+  height: 28px;
+}
+
+// Deaktivierte Buttons: Das Theme färbt deaktivierte Felder grau (#888), auf dem blauen Button
+// ist das kaum lesbar (z. B. Helpdesk „Kommentar als E-Mail senden“ ohne Text).
+input[type="submit"]:disabled,
+input[type="button"]:disabled,
+input[type="reset"]:disabled {
+  color: $white;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+// Helpdesk: Senden-Button mit Auswahlpfeil (span.helpdesk-split). Der Abstand unter dem Button
+// im Bearbeiten-Fenster gehört an den Span, sonst steht „Abbrechen“ daneben zu tief.
+#update .helpdesk-split {
+  vertical-align: top;
+  margin-bottom: 20px;
+
+  input[name="commit"] {
+    margin-bottom: 0;
+  }
+}
+.helpdesk-split + a {
+  font-size: 16px;
+  padding: 0 15px;
+  line-height: 28px;
+}
+
+// Checklisten: Das Plugin setzt das Menü am Plus-Button links an. Im festen Bearbeiten-Fenster
+// läuft es dann rechts hinaus (Scrollbalken, abgeschnitten). Rechtsbündig am Button öffnen,
+// Breite nach Inhalt statt fester 150px.
+#checklist-menu {
+  width: auto;
+  min-width: 150px;
+  white-space: nowrap;
+  transform: translateX(calc(-100% + 22px));
+}
+// Das Plugin rechnet mit jQuery position() relativ zum Bearbeiten-Fenster (#update), das in sich
+// scrollt; das Menü stand dann um die Scrollhöhe versetzt. Der gemeinsame Container von Menü und
+// Plus-Button wird Bezugspunkt, dann stimmt die Rechnung unabhängig vom Scrollen.
+#all_attributes .tabular:has(> #checklist-menu) {
+  position: relative;
+}
+
+// Untermenü „Von Vorlage“ (jQuery-UI-Menü): jQuery UI setzt es rechts neben den Eintrag und prüft
+// nur den Rand des Browserfensters, nicht den des Bearbeiten-Fensters. Links daneben öffnen,
+// Vorlagennamen nicht abschneiden.
+#checklist-menu .ui-menu {
+  left: auto !important;
+  right: 100% !important;
+  top: 0 !important;
+  width: auto;
+  min-width: 150px;
+  white-space: nowrap;
+}
+
+// Eingabefeld für neue Checklistenpunkte nicht über die ganze Zeile, Plus und Menü bleiben im Fenster
+#checklist_form .checklist-edit-box {
+  flex: 0 1 50%;
+
+  input.edit-box {
+    width: 100%;
+  }
+}
+
+// Ticket-Navigation (« Zurück | 2/2 | Weiter »): Redmine 7 rendert sie als Button-Gruppe
+// (span.pagination > ul.pages), die höher ist als die Autorzeile und darunter rutscht.
+// Wie unter Redmine 6 als kleine graue Textzeile auf Höhe der Autorzeile.
+#content div.issue .next-prev-links {
+  .pagination {
+    display: inline;
+    margin: 0;
+  }
+
+  ul.pages {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    gap: 0;
+
+    li {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: $gray-medium;
+      font-size: 0.8rem;
+      line-height: 24px;
+      min-width: 0;
+      box-shadow: none;
+    }
+
+    li + li::before {
+      content: '|';
+      padding: 0 6px;
+      color: $gray-medium;
+    }
+
+    a,
+    span {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: $gray-medium;
+      font-size: inherit;
+      line-height: inherit;
+      box-shadow: none;
+    }
+
+    a:hover {
+      color: $color-primary;
+      background: none;
+    }
+  }
+}
+
+// Laufende Zeit des Timers ohne Abstand zwischen Stunden, Minuten, Sekunden
+#top-menu .lab-top-timer #time-logger-menu #tl-timer-wrapper {
+  gap: 0;
+  font-variant-numeric: tabular-nums;
+}

@@ -37,6 +37,14 @@
       update.hide();
     });
 
+    // Redmine 7: Das Kontomenü steckt im Avatar-Dropdown. Den Timer von time_logger
+    // (li mit #time-logger-menu) wieder sichtbar vor den Avatar setzen. Die id bleibt,
+    // time_logger aktualisiert den Inhalt weiter über $('#time-logger-menu').
+    var timer = $('#account .dropdown-content #time-logger-menu').closest('li');
+    if (timer.length) {
+      $('<ul>', {'class': 'lab-top-timer'}).append(timer).insertBefore('#top-menu #account');
+    }
+
     // toggleFieldset();
     $('#update fieldset.tabular legend').click(function() {
       $(this).closest('fieldset').toggleClass('show-children');
